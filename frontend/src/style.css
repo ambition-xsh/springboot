@@ -1,0 +1,238 @@
+@import 'tailwindcss';
+@import 'animate.css';
+
+@theme {
+  --color-brand: #c02026;
+  --color-brand-dark: #8e151a;
+  --color-brand-soft: #f8e9ea;
+  --color-ink: #141414;
+  --color-muted: #5c5c5c;
+  --color-line: #e6e2de;
+  --color-paper: #f4f1ec;
+  --color-surface: #ffffff;
+  --font-sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-display: 'Oswald', 'Noto Sans SC', sans-serif;
+  --dock-h: 3.75rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background:
+    radial-gradient(ellipse 90% 45% at 50% -8%, rgba(192, 32, 38, 0.1), transparent),
+    linear-gradient(180deg, #faf8f5 0%, #f0ebe4 100%);
+  min-height: 100vh;
+  min-height: 100dvh;
+  line-height: 1.6;
+  overflow-x: clip;
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+#app {
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: clip;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+}
+
+.media-slot {
+  background:
+    linear-gradient(135deg, rgba(20, 20, 20, 0.04), rgba(192, 32, 38, 0.07)),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 8px,
+      rgba(20, 20, 20, 0.03) 8px,
+      rgba(20, 20, 20, 0.03) 16px
+    );
+  border: 1px dashed var(--color-line);
+}
+
+/* 只负责居中 + 左右内边距；布局（grid/flex）请写在内部子元素上 */
+.page-shell {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1rem, env(safe-area-inset-right, 0px));
+}
+
+@media (min-width: 640px) {
+  .page-shell {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-shell {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* H5 整页给底栏留空，避免页脚被挡住 */
+.app-shell {
+  padding-bottom: calc(var(--dock-h) + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 1024px) {
+  .app-shell {
+    padding-bottom: 0;
+  }
+}
+
+.section-y {
+  padding-block: 2.25rem;
+}
+
+@media (min-width: 768px) {
+  .section-y {
+    padding-block: 4.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-y {
+    padding-block: 5.5rem;
+  }
+}
+
+.page-banner {
+  position: relative;
+  overflow: hidden;
+  background: #141414;
+  color: #fff;
+  padding-block: 2rem;
+}
+
+@media (min-width: 768px) {
+  .page-banner {
+    padding-block: 4rem;
+  }
+}
+
+.page-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 85% 20%, rgba(192, 32, 38, 0.4), transparent 45%),
+    linear-gradient(115deg, #0a0a0a, #1a1010 55%, #0d0d0d);
+  z-index: 0;
+}
+
+.page-banner > * {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-brand);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--color-brand-dark);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.btn-ghost:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.surface-card {
+  border: 1px solid var(--color-line);
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+@media (hover: hover) {
+  .surface-card:hover {
+    border-color: rgba(192, 32, 38, 0.45);
+    box-shadow: 0 12px 40px rgba(20, 20, 20, 0.06);
+    transform: translateY(-2px);
+  }
+}
+
+.scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  max-width: 100%;
+}
+
+.scroll-x::-webkit-scrollbar {
+  height: 4px;
+}
+
+.scroll-x::-webkit-scrollbar-thumb {
+  background: rgba(192, 32, 38, 0.35);
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate__animated {
+    animation: none !important;
+  }
+}

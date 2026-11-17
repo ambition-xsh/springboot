@@ -1,0 +1,11 @@
+# 复制为 application-local.properties（同目录，已 gitignore）
+#
+# spring.datasource.password=你的 MySQL root 密码
+#
+# 建库（本地或云上执行一次）：
+#   CREATE DATABASE IF NOT EXISTS dingli CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+#
+# 查看留言接口需要请求头：X-Admin-Key: dingli-admin
+# （密钥在 application.properties 的 app.admin-key，可在本文件覆盖）
+# app.admin-key=你的密钥
+spring.datasource.password=请改成你的密码

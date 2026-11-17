@@ -1,0 +1,21 @@
+# Dependencies & build
+**/node_modules/
+**/target/
+**/dist/
+**/.vite/
+
+# Secrets & local config
+**/application-local.properties
+**/.env
+**/.env.*
+!**/.env.example
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
